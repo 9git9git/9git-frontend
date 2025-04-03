@@ -1,6 +1,6 @@
 import { Logo } from '@/components/common/Logo';
 import { Header } from '@/components/shared/Header';
-import TodoItem from '@/components/shared/TodoItem'; // ✅ 내 import 유지
+import TodoItem from '@/components/shared/TodoItem';
 import Card from '@/components/common/Card';
 
 export const Home = () => {
