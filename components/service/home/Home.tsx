@@ -2,7 +2,6 @@ import { Logo } from '@/components/common/Logo';
 import { Header } from '@/components/shared/Header';
 import TodoItem from '@/components/shared/TodoItem';
 import Card from '@/components/common/Card';
-import TodoItem from '@/components/shared/TodoItem';
 
 export const Home = () => {
   return (
