@@ -11,8 +11,9 @@ export const Home = () => {
       </Header>
 
       <div className="mt-6 flex flex-col items-center gap-4">
-        <Card title="목표 진행률" isMore height="h-40" />
-        <TodoItem category="영어" text="영어 단어 20개 외우기" />
+        <Card title="목표 진행률" isMore height="h-40">
+          <TodoItem category="영어" text="영어 단어 20개 외우기" />
+        </Card>
       </div>
     </div>
   );
