@@ -1,4 +1,3 @@
-'use client';
 import { Logo } from '@/components/common/Logo';
 import { Header } from '@/components/shared/Header';
 import TodoItem from '@/components/shared/TodoItem';
