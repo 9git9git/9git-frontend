@@ -17,3 +17,5 @@ export const Home = () => {
     </div>
   );
 };
+
+// isMore height="h-40"
