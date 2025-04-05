@@ -80,7 +80,7 @@ export default function TodayTodo() {
         </div>
       </section>
 
-      {/* 📝 오늘 할 일 */}
+      {/* 오늘 할 일 */}
       <section className="mb-1">
         <SectionTitle icon={<ListTodo size={16} color="#FDA63A" />} text="오늘 할 일" />
         <div className="flex items-center border-b border-[#F6C98E]">
