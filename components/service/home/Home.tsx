@@ -1,9 +1,11 @@
+'use client';
 import { Logo } from '@/components/common/Logo';
 import { Header } from '@/components/shared/Header';
 import TodoItem from '@/components/shared/TodoItem';
 import Card from '@/components/common/Card';
 import { ProgressBar } from '@/components/service/home/ProgressBar';
-import CompleteButton from '@/components/common/CompleteButton';
+import { ActionButton } from '@/components/common/ActionButton';
+import { Plus } from 'lucide-react';
 
 export const Home = () => {
   return (
@@ -16,7 +18,6 @@ export const Home = () => {
         <Card title="목표 진행률" isMore>
           <ProgressBar value={75} title="영어" />
           <TodoItem category="영어" text="영어 단어 20개 외우기" />
-          <CompleteButton onClick={() => console.log('클릭됨!')} />
         </Card>
       </div>
     </div>
