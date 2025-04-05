@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 import { DatePickerSection } from '@/components/common/DatePickerSection';
-import { SectionTitle } from '@/components/common/SectionTitle';
+import { SectionTitle } from '@/components/shared/SectionTitle';
 import { Goal, Calendar, Repeat, ListTodo } from 'lucide-react';
 
 export default function TodayTodo() {
