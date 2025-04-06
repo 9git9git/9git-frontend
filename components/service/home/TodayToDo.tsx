@@ -5,6 +5,8 @@ import { SectionTitle } from '@/components/shared/SectionTitle';
 import { Goal, Calendar, Repeat, ListTodo } from 'lucide-react';
 import React, { Dispatch, SetStateAction } from 'react';
 import { ColorMap } from '@/constants/color';
+import { ActionButton } from '@/components/common/ActionButton';
+import { Plus } from 'lucide-react';
 
 export default function TodayTodo() {
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
@@ -86,7 +88,9 @@ export default function TodayTodo() {
             placeholder="오늘 할 일을 작성해주세요"
             className="flex-1 text-sm px-1 py-1 bg-transparent text-[#7A4A1D] placeholder-[#C7A98E] focus:outline-none"
           />
-          <button className="text-[#FCAA2B] text-sm font-bold px-1">+ 추가</button>
+          <ActionButton onClick={() => console.log('추가')} icon={<Plus size={16} />}>
+            추가
+          </ActionButton>
         </div>
       </section>
     </>
