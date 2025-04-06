@@ -19,7 +19,6 @@ export const ActionButton = ({ icon, onClick, children }: Props) => {
   return (
     <Button
       onClick={handleClick}
-      variant="ghost"
       className={`
         bg-transparent hover:bg-transparent shadow-none border-none px-0 py-0 h-auto
         flex items-center gap-1 text-sm font-bold text-secondary
