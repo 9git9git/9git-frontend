@@ -3,6 +3,8 @@ import { useState } from 'react';
 import { DatePickerSection } from '@/components/shared/DatePickerSection';
 import { SectionTitle } from '@/components/shared/SectionTitle';
 import { Goal, Calendar, Repeat, ListTodo } from 'lucide-react';
+import React, { Dispatch, SetStateAction } from 'react';
+import { ColorMap } from '@/constants/color';
 
 export default function TodayTodo() {
   const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
@@ -11,7 +13,11 @@ export default function TodayTodo() {
   const goals = ['영어', '코딩', '운동'];
   const days = ['월', '화', '수', '목', '금', '토', '일'];
 
-  const toggleItem = (item: string, list: string[], setList: any) => {
+  const toggleItem = (
+    item: string,
+    list: string[],
+    setList: Dispatch<SetStateAction<string[]>>
+  ) => {
     setList(list.includes(item) ? list.filter((i) => i !== item) : [...list, item]);
   };
 
@@ -20,32 +26,21 @@ export default function TodayTodo() {
       {/* 목표 설정 */}
       <section className="mb-5">
         <SectionTitle icon={<Goal size={16} color="#FDA63A" />} text="목표 설정" />
-        <div className="flex gap-2">
+        <div className="flex justify-center items-center gap-10">
           {goals.map((goal) => {
             const isSelected = selectedGoals.includes(goal);
-            const colorMap: Record<string, string> = {
-              영어: '#FDA63A',
-              코딩: '#6C88C4',
-              운동: '#556B2F',
-            };
-            const activeColor = colorMap[goal];
+            const colorClass = ColorMap[goal] ?? 'bg-gray-200';
 
             return (
               <button
                 key={goal}
                 onClick={() => toggleItem(goal, selectedGoals, setSelectedGoals)}
-                style={
-                  isSelected
-                    ? {
-                        backgroundColor: activeColor,
-                        borderColor: activeColor,
-                        color: '#FFFFFF',
-                      }
-                    : {}
-                }
-                className={`px-3 py-1 rounded-md text-sm font-semibold border transition-all ${
-                  isSelected ? '' : 'bg-[#FDF2E6] text-[#7A4A1D] border-[#E6C9A8]'
-                }`}
+                className={`px-3 py-1 rounded-md text-sm font-semibold border transition-all
+                  ${
+                    isSelected
+                      ? `${colorClass} text-white border-transparent border-none`
+                      : 'bg-[#FDF2E6] text-[#7A4A1D] border-2 border-[#FDA63A]'
+                  }`}
               >
                 {goal}
               </button>
@@ -63,7 +58,7 @@ export default function TodayTodo() {
       {/* 반복 여부 */}
       <section className="mb-5">
         <SectionTitle icon={<Repeat size={16} color="#FDA63A" />} text="반복 여부" />
-        <div className="flex gap-1">
+        <div className="flex justify-center items-center gap-4">
           {days.map((day) => (
             <button
               key={day}
