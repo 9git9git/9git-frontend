@@ -93,6 +93,10 @@ export default function TodayTodo() {
           </ActionButton>
         </div>
       </section>
+      <div className="flex justify-between mt-6 bg-transparent">
+        <ActionButton onClick={() => console.log('삭제')}>삭제</ActionButton>
+        <ActionButton onClick={() => console.log('완료')}>완료</ActionButton>
+      </div>
     </>
   );
 }
