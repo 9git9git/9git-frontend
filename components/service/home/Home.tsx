@@ -7,7 +7,6 @@ import { ProgressBar } from '@/components/service/home/ProgressBar';
 import { ActionButton } from '@/components/common/ActionButton';
 import { Plus } from 'lucide-react';
 import CustomBadge from '@/components/common/CustomBadge';
-import TodoItem from '@/components/shared/TodoItems';
 
 export const Home = () => {
   return (
