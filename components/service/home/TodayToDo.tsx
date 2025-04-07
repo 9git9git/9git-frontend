@@ -12,23 +12,36 @@ import { ColorMap } from '@/constants/color';
 
 export default function TodayTodo() {
   const [todoInput, setTodoInput] = useState('');
-  const goals = ['영어', '코딩', '운동'];
-  const days = ['월', '화', '수', '목', '금', '토', '일'];
+  const [selectedGoals, setSelectedGoals] = useState<string[]>([]);
+  const [selectedDays, setSelectedDays] = useState<string[]>([]);
   const [startDate, setStartDate] = useState<Date | undefined>(new Date());
   const [endDate, setEndDate] = useState<Date | undefined>(new Date());
 
+  const goals = ['영어', '코딩', '운동'];
+  const days = ['월', '화', '수', '목', '금', '토', '일'];
+
+  const toggleItem = (
+    item: string,
+    list: string[],
+    setList: React.Dispatch<React.SetStateAction<string[]>>
+  ) => {
+    setList(list.includes(item) ? list.filter((i) => i !== item) : [...list, item]);
+  };
+
   return (
     <>
-      {/* 목표 설정 */}
+      {/* 🎯 목표 설정 */}
       <section className="mb-5">
         <SectionTitle icon={<Goal size={16} color="oklch(0.76 0.168 51.681)" />} text="목표 설정" />
         <SectionContent className="gap-10">
           {goals.map((goal) => {
             const colorClass = ColorMap[goal] ?? 'bg-gray-200';
+            const isSelected = selectedGoals.includes(goal);
             return (
               <ToggleButton
                 key={goal}
                 item={goal}
+                onClick={() => toggleItem(goal, selectedGoals, setSelectedGoals)}
                 className="px-4 py-2 rounded-md text-sm font-semibold border-2"
                 selectedClassName={`${colorClass} text-white border-transparent`}
                 unselectedClassName="bg-[#FDF2E6] text-secondary border-primary"
@@ -40,7 +53,7 @@ export default function TodayTodo() {
         </SectionContent>
       </section>
 
-      {/* 기간 설정 */}
+      {/* 🗓️ 기간 설정 */}
       <section className="mb-5">
         <SectionTitle
           icon={<Calendar size={16} color="oklch(0.76 0.168 51.681)" />}
@@ -48,14 +61,12 @@ export default function TodayTodo() {
         />
         <div className="flex items-center justify-center gap-5">
           <DatePickerSection date={startDate} setDate={setStartDate} />
-
           <span className="text-secondary text-xl">~</span>
-
           <DatePickerSection date={endDate} setDate={setEndDate} />
         </div>
       </section>
 
-      {/* 반복 여부 */}
+      {/* 🔁 반복 여부 */}
       <section className="mb-5">
         <SectionTitle
           icon={<Repeat size={16} color="oklch(0.76 0.168 51.681)" />}
@@ -66,6 +77,7 @@ export default function TodayTodo() {
             <ToggleButton
               key={day}
               item={day}
+              onClick={() => toggleItem(day, selectedDays, setSelectedDays)}
               className="w-8 h-8 rounded-md text-sm font-bold flex items-center justify-center"
               selectedClassName="bg-secondary text-white"
               unselectedClassName="bg-[#FDF2E6] text-secondary"
@@ -76,7 +88,7 @@ export default function TodayTodo() {
         </div>
       </section>
 
-      {/* 오늘 할 일 */}
+      {/* ✅ 오늘 할 일 입력 */}
       <section className="mb-1">
         <SectionTitle
           icon={<ListTodo size={16} color="oklch(0.76 0.168 51.681)" />}
@@ -96,7 +108,7 @@ export default function TodayTodo() {
         </SectionContent>
       </section>
 
-      {/* 하단 액션 버튼 */}
+      {/* 🛠️ 하단 액션 버튼 */}
       <div className="flex justify-between mt-6">
         <ActionButton onClick={() => console.log('삭제')}>삭제</ActionButton>
         <ActionButton onClick={() => console.log('완료')}>완료</ActionButton>
