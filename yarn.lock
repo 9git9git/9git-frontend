@@ -79,7 +79,11 @@
 
 "@eslint/js@9.23.0", "@eslint/js@^9.23.0":
   version "9.23.0"
+<<<<<<< HEAD
   resolved "https://registry.npmjs.org/@eslint/js/-/js-9.23.0.tgz"
+=======
+  resolved "https://registry.yarnpkg.com/@eslint/js/-/js-9.23.0.tgz#c09ded4f3dc63b40b933bcaeb853fceddb64da30"
+>>>>>>> 8fa778ca1583fe280549b031686afe4cf0c7d86e
   integrity sha512-35MJ8vCPU0ZMxo7zfev2pypqTwWTofFZO6m4KAtdoFhRpLJUpHTZZ+KB3C7Hb1d7bULYwO4lJXGCi5Se+8OMbw==
 
 "@eslint/object-schema@^2.1.6":

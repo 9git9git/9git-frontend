@@ -10,16 +10,16 @@ interface CardProps {
 
 export default function Card({ title, rightAction, children }: CardProps) {
   return (
-    <section className="bg-[#fff0d5] rounded-xl p-4 w-[90%] flex flex-col gap-y-2">
-      <div className="flex justify-between items-center font-semibold text-[#744D2C]">
+    <section className="bg-primary-light rounded-xl p-4 w-[90%] flex flex-col gap-y-4">
+      <div className="flex justify-between items-center font-semibold text-secondary">
         <div>{title}</div>
         {rightAction && (
-          <div className="cursor-pointer hover:text-[#FDA63A] transition-colors duration-200">
+          <div className="cursor-pointer hover:text-primary transition-colors duration-200">
             {rightAction}
           </div>
         )}
       </div>
-      <Separator className="bg-[#f4ddbd]" />
+      <Separator className="bg-beige-deco" />
       <div className="mt-2">{children}</div>
     </section>
   );
