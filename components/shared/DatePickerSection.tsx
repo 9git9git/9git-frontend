@@ -1,62 +1,34 @@
 'use client';
 
-import { zodResolver } from '@hookform/resolvers/zod';
 import { format } from 'date-fns';
 import { CalendarIcon } from 'lucide-react';
-import { useForm } from 'react-hook-form';
-import { z } from 'zod';
-
 import { Calendar } from '@/components/ui/calendar';
 import { Button } from '@/components/ui/button';
 import { Popover, PopoverTrigger, PopoverContent } from '@/components/ui/popover';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 
-const FormSchema = z.object({
-  date: z.date({ required_error: '날짜를 선택해주세요.' }),
-});
+type Props = {
+  date?: Date;
+  setDate: (date: Date | undefined) => void;
+};
 
-export function DatePickerSection() {
-  const form = useForm<z.infer<typeof FormSchema>>({
-    resolver: zodResolver(FormSchema),
-    defaultValues: {
-      date: new Date(),
-    },
-  });
-
+export function DatePickerSection({ date, setDate }: Props) {
   return (
-    <Form {...form}>
-      <form className="space-y-2">
-        <FormField
-          control={form.control}
-          name="date"
-          render={({ field }) => (
-            <FormItem className="flex flex-col">
-              <Popover>
-                <PopoverTrigger asChild>
-                  <FormControl>
-                    <Button
-                      variant="outline"
-                      className="w-full justify-start text-left font-normal border-[#F6C98E] text-[#7A4A1D]"
-                    >
-                      {field.value ? format(field.value, 'PPP') : <span>날짜를 선택하세요</span>}
-                      <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
-                    </Button>
-                  </FormControl>
-                </PopoverTrigger>
-                <PopoverContent className="w-auto p-0" align="start">
-                  <Calendar
-                    mode="single"
-                    selected={field.value}
-                    onSelect={field.onChange}
-                    initialFocus
-                  />
-                </PopoverContent>
-              </Popover>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-      </form>
-    </Form>
+    <div className="flex flex-col w-full max-w-xs">
+      <span className="mb-1 text-sm font-medium text-[#7A4A1D]"></span>
+      <Popover>
+        <PopoverTrigger asChild>
+          <Button
+            variant="outline"
+            className="w-full justify-start text-left font-normal border-[#F6C98E] text-[#7A4A1D]"
+          >
+            {date ? format(date, 'PPP') : <span>날짜 선택</span>}
+            <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
+          </Button>
+        </PopoverTrigger>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar mode="single" selected={date} onSelect={setDate} initialFocus />
+        </PopoverContent>
+      </Popover>
+    </div>
   );
 }
