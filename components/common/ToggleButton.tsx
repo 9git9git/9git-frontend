@@ -1,32 +1,29 @@
-import { useToggle } from '@/hooks/useToggle';
-import { cn } from '@/lib/utils';
-
-type ToggleButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
+type ToggleButtonProps = {
   item: string;
+  isSelected: boolean;
+  onToggle: (item: string) => void;
   selectedClassName?: string;
   unselectedClassName?: string;
+  className?: string;
+  children: React.ReactNode;
 };
 
 export const ToggleButton = ({
-  className,
   item,
+  isSelected,
+  onToggle,
   selectedClassName,
   unselectedClassName,
+  className,
   children,
   ...props
 }: ToggleButtonProps) => {
-  const { toggle, isSelected } = useToggle<string>([]);
-
-  const selected = isSelected(item);
-
   return (
     <button
-      className={cn(
-        'transition-all focus:outline-none',
-        selected ? selectedClassName : unselectedClassName,
-        className
-      )}
-      onClick={() => toggle(item)}
+      onClick={() => onToggle(item)}
+      className={`transition-all focus:outline-none ${
+        isSelected ? selectedClassName : unselectedClassName
+      } ${className}`}
       {...props}
     >
       {children}
