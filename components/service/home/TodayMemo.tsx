@@ -23,7 +23,7 @@ export default function TodayMemo() {
   return (
     <Card
       title={
-        <div className="flex items-center gap-2 text-[#744D2C] font-bold text-sm">
+        <div className="flex items-center gap-2 text-secondary font-bold text-sm">
           <PenLine size={16} color="#FDA63A" />
           <span>오늘의 Memo</span>
         </div>
@@ -35,7 +35,8 @@ export default function TodayMemo() {
         <div>
           <SectionTitle icon={<FileTextIcon size={16} color="#FDA63A" />} text="제목" />
           <input
-            className="w-full p-2 border border-orange-300 rounded-md bg-transparent placeholder:text-sm"
+            className="w-full p-2 border border-orange-300 rounded-md bg-transparent 
+                       placeholder:text-[#F4DDBD] text-[#4B5563] placeholder:text-sm text-sm"
             placeholder="제목을 작성해주세요"
             value={title}
             onChange={(e) => setTitle(e.target.value)}
@@ -48,12 +49,13 @@ export default function TodayMemo() {
           <textarea
             rows={2}
             maxLength={300}
-            className="w-full p-2 border border-orange-300 rounded-md bg-transparent placeholder:text-sm resize-none"
+            className="w-full p-2 border border-orange-300 rounded-md bg-transparent 
+                       placeholder:text-[#F4DDBD] text-[#4B5563] placeholder:text-sm text-sm resize-none"
             placeholder="메모 내용을 입력해주세요"
             value={content}
             onChange={(e) => setContent(e.target.value)}
           />
-          <div className="flex justify-between mt-1 text-xs text-[#744D2C]">
+          <div className="flex justify-between mt-1 text-xs text-secondary">
             {!isContentValid && <span className="text-primary">내용은 필수입니다.</span>}
           </div>
         </div>
