@@ -5,8 +5,6 @@ import Card from '@/components/common/Card';
 import { ProgressBar } from '@/components/service/home/ProgressBar';
 import TodayMemo from './TodayMemo';
 
-import TodayTodo from './TodayToDo'; //
-
 export const Home = () => {
   return (
     <div>

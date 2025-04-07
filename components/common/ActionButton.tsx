@@ -25,7 +25,7 @@ export const ActionButton = ({ icon, onClick, children }: Props) => {
     active:bg-transparent 
     shadow-none border-none px-0 py-0 h-auto
     flex items-center gap-1 text-sm font-bold
-    !text-[#744D2C] !hover:text-[#FDA63A]
+    text-[#744D2C] hover:text-[#FDA63A]
     transition-colors duration-200
   `}
     >
