@@ -1,6 +1,5 @@
 'use client';
 
-import { useState } from 'react';
 import { useForm, FormProvider } from 'react-hook-form';
 import { GenderRadio } from '@/components/service/profile/ProfileModal/GenderRadio';
 import AgeInput from '@/components/service/profile/ProfileModal/AgeInput';
@@ -35,45 +34,44 @@ type FormValues = {
 };
 
 export default function ProfileModal() {
-  const [selectedGender, setSelectedGender] = useState<'M' | 'F' | undefined>(undefined);
-  const [selectedJob, setSelectedJob] = useState<Job | ''>('');
-
   const methods = useForm<FormValues>({
     defaultValues: {
       age: '',
-      gender: selectedGender ?? 'M',
-      job: selectedJob,
+      gender: 'M',
+      job: '',
     },
   });
 
   const handleSubmit = () => {
+    console.log(age, gender, job);
     console.log('제출 완료!'); // 완료 버튼 클릭 시 처리할 작업
   };
 
   return (
     <FormProvider {...methods}>
-      <div className="p-4 space-y-3">
-        {/* 헤더 */}
-        <h2 className="text-lg font-semibold">나의 정보</h2>
-        {/* 아이디 */}
-        <p className="text-sm">이름: 홍길동</p>
+      <form {...form} onSubmit={handleSubmit}>
+        <div className="p-4 space-y-3">
+          {/* 아이디 */}
+          <h2 className="text-lg text-secondary font-semibold">아이디</h2>
+          <p className="text-sm text-secondary mb-3">user0408</p>
 
-        {/* 성별 */}
-        <GenderRadio selectedGender={selectedGender} setSelectedGender={setSelectedGender} />
+          {/* 성별 */}
+          <GenderRadio selectedGender={selectedGender} setSelectedGender={setSelectedGender} />
 
-        {/* 나이 */}
-        <AgeInput />
+          {/* 나이 */}
+          <AgeInput />
 
-        {/* 직업 */}
-        <JobSelectbar selectedJob={selectedJob} setSelectedJob={setSelectedJob} />
+          {/* 직업 */}
+          <JobSelectbar selectedJob={selectedJob} setSelectedJob={setSelectedJob} />
 
-        {/* 개인정보 동의서 */}
-        <Separator className="bg-beige-deco" />
-        <TextScroll text={PERSONAL_INFORMATION_AGREEMENT} />
+          {/* 개인정보 동의서 */}
+          <Separator className="bg-beige-deco" />
+          <TextScroll text={PERSONAL_INFORMATION_AGREEMENT} />
 
-        {/* 체크박스 + 완료 버튼 */}
-        <ConsentConfirm onConfirm={handleSubmit} />
-      </div>
+          {/* 체크박스 + 완료 버튼 */}
+          <ConsentConfirm onConfirm={handleSubmit} />
+        </div>
+      </form>
     </FormProvider>
   );
 }
