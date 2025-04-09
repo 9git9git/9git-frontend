@@ -1,12 +1,15 @@
-import { Header } from "@/components/shared/Header";
-import { Menu } from "lucide-react";
+import { ChatbotHeader } from './ChatbotHeader';
+import { ChatbotIntro } from './ChatbotIntro';
 
 export const Chatbot = () => {
   return (
     <>
-      <Header>
-        <Menu width={28} height={28} className="cursor-pointer m-2" />
-      </Header>
+      {/* 채팅영역 */}
+      <div className="flex flex-col h-full w-[440px]">
+        {/* 채팅영역 */}
+        <ChatbotHeader />
+        <ChatbotIntro />
+      </div>
     </>
   );
 };
