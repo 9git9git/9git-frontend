@@ -8,8 +8,9 @@ import { ToggleButton } from '@/components/common/ToggleButton';
 import { ActionButton } from '@/components/common/ActionButton';
 import { Goal, Calendar, Repeat, ListTodo, Plus } from 'lucide-react';
 import { Switch } from '@/components/ui/switch';
+import { DeleteCompleteButtons } from '@/components/common/DeleteCompleteButton';
 
-export default function TodayTodo() {
+export default function TodoPopup() {
   const [todoInput, setTodoInput] = useState('');
   const [startDate, setStartDate] = useState<Date | undefined>(new Date());
   const [endDate, setEndDate] = useState<Date | undefined>(new Date());
@@ -69,7 +70,7 @@ export default function TodayTodo() {
         </div>
 
         {isRepeat && (
-          <SectionContent gap={4}>
+          <SectionContent gap={3}>
             <ToggleButton
               items={days}
               initialSelected={selectedDays}
@@ -100,10 +101,11 @@ export default function TodayTodo() {
       </section>
 
       {/* 하단 버튼 */}
-      <div className="flex justify-between mt-6 bg-transparent px-4">
-        <ActionButton onClick={() => console.log('삭제')}>삭제</ActionButton>
-        <ActionButton onClick={() => console.log('완료')}>완료</ActionButton>
-      </div>
+
+      <DeleteCompleteButtons
+        onDelete={() => console.log('삭제')}
+        onComplete={() => console.log('완료')}
+      />
     </>
   );
 }
