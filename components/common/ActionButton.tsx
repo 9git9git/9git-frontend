@@ -5,7 +5,7 @@ import { useState, ReactNode } from 'react';
 type Props = {
   onClick: () => void;
   icon?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
 };
 
 export const ActionButton = ({ icon, onClick, children }: Props) => {
