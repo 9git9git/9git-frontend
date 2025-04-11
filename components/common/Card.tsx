@@ -1,29 +1,40 @@
 'use client';
 import { Separator } from '@/components/ui/separator';
 
-interface CardProps {
-  title: string;
-  height?: string;
+type Props = {
+  title: React.ReactNode;
   isMore?: boolean;
-  children?: React.ReactNode; //chilren 생성
-}
+  children: React.ReactNode;
+  bgColor?: string;
+  shadowColor?: string;
+};
 
 export default function Card({
   title,
-  height, //높이 수정
   isMore = false,
   children,
-}: CardProps) {
+  bgColor = '#FDE8CE',
+  shadowColor = '#F6D1A5', // #F6D1A5
+}: Props) {
   return (
-    <section className="bg-primary-light rounded-xl p-4 w-[90%] flex flex-col gap-y-4">
-      <div className="flex justify-between items-center font-semibold">
-        <span>{title}</span>
-        {isMore && (
-          <div className="text-sm text-secondary font-semibold hover:text-primary">+ 더보기</div>
-        )}
+    <section
+      className="rounded-xl p-4 w-[90%] flex flex-col gap-y-4"
+      style={{
+        backgroundColor: bgColor,
+        boxShadow: `2px 2px 0 ${shadowColor}`,
+      }}
+    >
+      <div className="flex flex-col gap-y-1">
+        <div className="flex justify-between items-center font-semibold">
+          {title}
+          {isMore && (
+            <div className="text-sm text-secondary font-semibold hover:text-primary cursor-pointer">
+              + 더보기
+            </div>
+          )}
+        </div>
+        <Separator className="bg-beige-deco" />
       </div>
-      <Separator className="bg-beige-deco" />
-
       <div>{children}</div>
     </section>
   );
